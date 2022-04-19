@@ -1,0 +1,91 @@
+﻿@model RegistrationModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<style>
+    div {
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+    }
+
+    div {
+        width: 50%;
+    }
+
+    label, input, button, select {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+    label {
+        text-align: left;
+        width: 15%;
+        margin-right: 40px;
+    }
+
+    input, select, textarea {
+        flex: auto;
+    }
+
+    button {
+        width: 30%;
+    }
+</style>
+<h1>
+    HTML Registration form with verification
+</h1>
+<form asp-action="Register" asp-controller="Registration">
+    <div>
+        <label>Name: </label>
+        <input asp-for=@Model.Name type="text" id="Name" />
+    </div>
+    <div>
+        <label >Email: </label>
+        <input asp-for="Email" type="Email" id="Email" />
+    </div>
+    <div>
+        <label >Password: </label>
+        <input asp-for="Password" type="password" id="Password" />
+    </div>
+    <div>
+        <label >PhoneNumber: </label>
+        <input asp-for="PhoneNumber" type="number" id="PhoneNumber" />
+    </div>
+    <div>
+        <label asp-for="Gender">Gender: </label>
+        <input type="radio" value="Male" asp-for="Gender" name="gender" />
+        <label id="Gender">Male</label>
+        <input type="radio" value="Female" asp-for="Gender" name="gender" />
+        <label id="Gender">Female</label>
+        <input type="radio" value="Others" asp-for="Gender" name="gender" />
+        <label id="Gender">Others</label>
+    </div>
+    <div>
+        <label asp-for="Language">Language: </label>
+        <select id="Language">
+            <option asp-for="Language" value="Kannada">Kannada</option>
+            <option asp-for="Language" value="Telugu">Telugu</option>
+            <option asp-for="Language" value="Tamil">Tamil</option>
+            <option asp-for="Language" value="English">English</option>
+        </select>
+    </div>
+    <div>
+        <label >Zipcode: </label>
+        <input asp-for="Zipcode" type="number" id="Zipcode" />
+    </div>
+    <div>
+        <label >About: </label>
+        <textarea asp-for="About" rows="5" id="About" placeholder="write about yourself..."></textarea>
+    </div>
+    <div>
+        <button type="submit"> Register</button>
+    </div>
+</form>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
